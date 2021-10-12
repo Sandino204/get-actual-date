@@ -11,10 +11,6 @@
 		"date-and-time": "^2.0.1",
 		"express": "^4.12.4"
 	},
-	"repository": {
-		"type": "git",
-		"url": "https://githost.com/camper/repo.git"
-	},
 	"keywords": [
 		"node",
 		"hyperdev",
