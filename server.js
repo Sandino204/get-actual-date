@@ -33,19 +33,23 @@ app.get("/api/:time", (req, res) => {
   const timeDate = isString ? new Date(time) : new Date(parseInt(time))
 
   if(!valid){
-    return res.status(200).json({
-      success: false, 
-      message: "Unix invalid"
+    return res.status(500).json({
+      error: "Invalid Date"
     })
   }
 
   return res.status(200).json({
     unix: timeDate.getTime(), 
-    utc: date.format(timeDate, "ddd, DD ddd YYYY HH:mm:ss " + "GMT")
+    utc: date.format(timeDate, "ddd, DD MMM YYYY HH:mm:ss ") + "GMT"
   })
 })
 
-
+app.get("/api", (req, res) => {
+  return res.status(200).json({
+    unix: new Date().getTime(), 
+    utc: date.format(new Date(), "ddd, DD MMM YYYY HH:mm:ss ") + "GMT"
+  })
+})
 
 // listen for requests :)
 var listener = app.listen(5000, function () {
